@@ -71,14 +71,85 @@ class _JobPageState extends State<JobPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                           /// CustomOutlineBtn(text: text, color: color),
+                            CustomOutlineBtn(
+                              width: width * 0.26,
+                              height: height * 0.04,
+                              color2: kLight,
+                              text: "Full-time",
+                              color: kOrange,
+                            ),
+                            Row(
+                              children: [
+                                ReusableText(
+                                  text: "10k",
+                                  style: appstyle(22, kDark, FontWeight.w600),
+                                ),
+                                SizedBox(
+                                  width: width * 0.2,
+                                  child: ReusableText(
+                                    text: "/montly",
+                                    style: appstyle(22, kDark, FontWeight.w600),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
                 ),
+                const HeightSpacer(size: 20),
+                ReusableText(
+                  text: "Job Description",
+                  style: appstyle(12, kDark, FontWeight.w600),
+                ),
+                const HeightSpacer(size: 10),
+                Text(
+                  desc,
+                  textAlign: TextAlign.justify,
+                  maxLines: 8,
+                  style: appstyle(16, kDarkGrey, FontWeight.normal),
+                ),
+                const HeightSpacer(size: 20),
+                ReusableText(
+                  text: "Requirement",
+                  style: appstyle(16, kDark, FontWeight.w600),
+                ),
+                const HeightSpacer(size: 10),
+                SizedBox(
+                  height: height * 0.6,
+                  child: ListView.builder(
+                    itemCount: requirements.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final req = requirements[index];
+                      String bullet = "\u2022";
+                      return Text(
+                        "$bullet $req\n",
+                        maxLines: 4,
+                        textAlign: TextAlign.justify,
+                        style: appstyle(16, kDarkGrey, FontWeight.normal),
+                      );
+                    },
+                  ),
+                ),
+                HeightSpacer(size: 20),
               ],
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 20.h),
+
+                child: CustomOutlineBtn(
+                  width: width,
+                  height: height * 0.06,
+                  text: "Apply Now",
+                  color: kLight,
+                  color2: kOrange,
+                ),
+              ),
             ),
           ],
         ),
